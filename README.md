@@ -1,4 +1,4 @@
-##News App
+## News App
 A simple app to demonstrate Clean Architecture with RestAPI and flutter_bloc
 
 API: https://newsapi.org/docs/get-started
