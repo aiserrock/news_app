@@ -19,6 +19,8 @@ dependencies:
   flutter_bloc: ^7.1.0
   mockito: ^5.0.7
   http: ^0.13.3
+  connectivity: ^3.0.6
+  equatable: ^2.0.3
 
   # Linters
   pedantic: ^1.11.1
