@@ -1,6 +1,6 @@
 import 'package:json_annotation/json_annotation.dart';
 
-part 'news.g.dart';
+part 'g/news.g.dart';
 
 @JsonSerializable()
 class NewsResponse {

@@ -6,7 +6,7 @@ import 'package:news_app/presentation/pages/search_page/search.dart';
 /// Константы для страниц, здесь должны быть перечислены все страницы без исключений
 const HOME = '/home';
 const FAVORITE = '/favorite';
-const SEARCH = '/search';
+const SEARCH = '/home/search';
 
 final routes = <String,WidgetBuilder>{
   HOME:(_) => Home(),
