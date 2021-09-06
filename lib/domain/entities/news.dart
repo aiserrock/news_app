@@ -1,6 +1,6 @@
 import 'package:json_annotation/json_annotation.dart';
 
-part 'g/news.g.dart';
+part 'news.g.dart';
 
 @JsonSerializable()
 class NewsResponse {
@@ -23,11 +23,11 @@ class Article {
   final Source source;
   final String author;
   final String title;
-  final String description;
+  final String? description;
   final String url;
   final String urlToImage;
   final String publishedAt;
-  final String content;
+  final String? content;
 
   Article(
     this.source,
@@ -46,8 +46,8 @@ class Article {
 
 @JsonSerializable()
 class Source {
-  final String id;
-  final String name;
+  final String? id;
+  final String? name;
 
   Source(
     this.id,

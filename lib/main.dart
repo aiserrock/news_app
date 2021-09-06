@@ -14,7 +14,7 @@ class MyApp extends StatelessWidget {
       title: 'News presentation',
       theme: theme(),
       routes: routes,
-      initialRoute: HOME,
+      initialRoute: ROOT,
     );
   }
 }

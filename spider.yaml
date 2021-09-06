@@ -20,6 +20,6 @@ groups:
     class_name: Images
     types: [ .png, .jpg, .jpeg, .webp, .webm, .bmp ]
   - path: assets/icons
-    class_name: Icons
+    class_name: Svgs
     package: res
     types: [ .svg ]

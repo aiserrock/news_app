@@ -9,3 +9,5 @@
 - widgets/ auth/ login_page/ login_widget1.dart login_widget2.dart login_widget3.dart 
 
 - auth_page/ auth_widget.dart
+
+### root_navigation.dart служит контейнером (корнем всего приложения "/"), в котором происходит переключение страниц

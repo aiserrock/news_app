@@ -32,7 +32,7 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
     final response = await repository.getEverythingNews();
 
     if (response.hasData) {
-      articles = response.data!;
+      articles = response.data!.articles;
       yield HomeDataState(articles: articles);
     } else {
       yield HomeDataState(articles: articles,error: response.errorCode);

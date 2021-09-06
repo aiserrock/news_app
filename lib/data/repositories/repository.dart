@@ -13,10 +13,11 @@ class RepositoryImpl extends Repository {
   RepositoryImpl(this.checker);
 
   @override
-  Future<FutureResponse<List<Article>>> getEverythingNews() async {
+  Future<FutureResponse<NewsResponse>> getEverythingNews() async {
     try {
       if (!await checker.hasInternet) throw ConstantsLocalization.NO_INTERNET;
       final params = {
+        'q':'bitcoin',
         'apiKey': Constants.API_KEY,
       };
 
@@ -25,15 +26,14 @@ class RepositoryImpl extends Repository {
         Constants.EVERYTHING_NEWS_ENDPOINT,
         params,
       );
+      var tmp = uri;
 
       var response = await http.get(uri);
 
       if (response.statusCode != 200) throw '';
 
-      var articles = <Article>[];
       var newsResponse = NewsResponse.fromJson(json.decode(response.body));
-      newsResponse.articles.forEach((article) => articles.add(article));
-      return FutureResponse.success(articles);
+      return FutureResponse.success(newsResponse);
     } catch (e) {
       return FutureResponse.fail(e.toString());
     }
