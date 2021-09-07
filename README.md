@@ -7,7 +7,7 @@
 [![style: effective dart](https://img.shields.io/badge/style-effective_dart-40c4ff.svg)](https://github.com/tenhobi/effective_dart)
 [![License: MIT](https://img.shields.io/badge/license-MIT-purple.svg)](https://opensource.org/licenses/MIT)
 
-Test task for the 'SOCOLOV' jewelry company for a position junior Flutter mobile developer.
+Test task for the 'SOCOLOV' jewelry company for a position junior Flutter mobile developer.  
 A simple app to demonstrate Clean Architecture with RestAPI,flutter_bloc,mokito
 
 Figma design: https://www.figma.com/community/file/975336242667665188
