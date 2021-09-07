@@ -86,46 +86,53 @@ class _HomeState extends State<Home> {
             ],
           ),
           Expanded(
-            child: Padding(
-              padding: EdgeInsets.only(left: 15),
-              child: BlocConsumer<HomeBloc, HomeState>(
-                bloc: bloc,
-                listener: (context, state) {
-                  if (state is HomeDataState && state.error != null) {
-                    // show error
-                  }
-                },
-                builder: (context, state) {
-                  if (state is HomeInitial) {
-                    return Container();
-                  }
-                  state = state as HomeDataState;
-                  final articles = state.articles;
-                  return Column(
-                    children: [
-                      SizedBox(
-                        height: 240,
-                        child: ListView.builder(
-                          scrollDirection: Axis.horizontal,
-                          itemCount:
-                              articles.length + (state.isLoading ? 1 : 0),
-                          controller: scrollController,
-                          itemBuilder: (context, index) {
-                            if (index < articles.length) {
-                              return LatestNewsCards(
-                                articles: articles,
-                                index: index,
-                              );
-                            }
-                            return Center(child: CircularProgressIndicator());
-                          },
-                        ),
+            child: BlocConsumer<HomeBloc, HomeState>(
+              bloc: bloc,
+              listener: (context, state) {
+                if (state is HomeDataState && state.error != null) {
+                  // show error
+                }
+              },
+              builder: (context, state) {
+                if (state is HomeInitial) {
+                  return Container();
+                }
+                state = state as HomeDataState;
+                final articles = state.articles;
+                return Column(
+                  children: [
+                    SizedBox(
+                      height: 240,
+                      child: ListView.builder(
+                        scrollDirection: Axis.horizontal,
+                        itemCount: articles.length + (state.isLoading ? 1 : 0),
+                        controller: scrollController,
+                        itemBuilder: (context, index) {
+                          if (index == 0) {
+                            return Row(
+                              children: [
+                                SizedBox(width: 15),
+                                LatestNewsCards(
+                                  articles: articles,
+                                  index: index,
+                                ),
+                              ],
+                            );
+                          }
+                          if (index < articles.length) {
+                            return LatestNewsCards(
+                              articles: articles,
+                              index: index,
+                            );
+                          }
+                          return Center(child: CircularProgressIndicator());
+                        },
                       ),
-                      Spacer(),
-                    ],
-                  );
-                },
-              ),
+                    ),
+                    Spacer(),
+                  ],
+                );
+              },
             ),
           ),
         ],
@@ -148,23 +155,67 @@ class LatestNewsCards extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.only(right: 8),
-      child: Container(
-        width: MediaQuery.of(context).size.width * 0.856,
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.all(
-            Radius.circular(8),
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(8),
+        child: Container(
+          width: MediaQuery.of(context).size.width * 0.856,
+          child: Stack(
+            children: [
+              Image.network(
+                articles[index].urlToImage,
+                fit: BoxFit.cover,
+                width: MediaQuery.of(context).size.width * 0.856,
+                height: 240,
+              ),
+              Container(
+                decoration: BoxDecoration(
+                  gradient: LinearGradient(
+                    // from bottom to center
+                    begin: Alignment.bottomCenter,
+                    end: Alignment.center,
+                    // from black to transparent black
+                    colors: [
+                      Color.fromRGBO(0, 0, 0, 1),
+                      Color.fromRGBO(98, 98, 98, 0.35),
+                    ],
+                  ),
+                ),
+              ),
+              Padding(
+                padding: EdgeInsets.only(
+                  top: 60,
+                  right: 8,
+                  left: 8,
+                  bottom: 8,
+                ),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      'by ${articles[index].author}',
+                      style: ConstantsTextStyle.tsNunitoReguler10,
+                    ),
+                    Text(articles[index].title,
+                        style: ConstantsTextStyle.tsNewYorkSmallSemibold16),
+                    SizedBox(height: 32),
+                    Text(
+                      articles[index].description ?? '',
+                      style: ConstantsTextStyle.tsNunitoLight10,
+                      overflow: TextOverflow.ellipsis,
+                      maxLines: 2,
+                    ),
+                  ],
+                ),
+              ),
+              Material(
+                color: Colors.transparent,
+                child: InkWell(
+                  borderRadius: BorderRadius.circular(8),
+                  onTap: () {},
+                ),
+              ),
+            ],
           ),
-        ),
-        child: Stack(
-          children: [
-            Image.network(
-              articles[index].urlToImage,
-              fit: BoxFit.cover,
-              width: MediaQuery.of(context).size.width * 0.856,
-              height: 240,
-            ),
-            Container(),
-          ],
         ),
       ),
     );
