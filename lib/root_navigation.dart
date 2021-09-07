@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:news_app/presentation/general_widgets/custom_bottom_nav_bar.dart';
 import 'package:news_app/presentation/pages/favorite_page/favorite.dart';
 import 'package:news_app/presentation/pages/home_page/home.dart';
