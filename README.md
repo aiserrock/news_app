@@ -8,7 +8,7 @@
 [![License: MIT](https://img.shields.io/badge/license-MIT-purple.svg)](https://opensource.org/licenses/MIT)
 
 Test task for the 'SOCOLOV' jewelry company for a position junior Flutter mobile developer.  
-A simple app to demonstrate Clean Architecture with RestAPI,flutter_bloc,mokito
+A simple app to demonstrate Clean Architecture with RestAPI, flutter_bloc, mokito.
 
 Figma design: https://www.figma.com/community/file/975336242667665188
 API: https://newsapi.org/docs/get-started
