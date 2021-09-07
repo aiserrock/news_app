@@ -23,6 +23,12 @@ API: https://newsapi.org/docs/get-started
 - Dependency Injection with [injectable](https://pub.dev/packages/injectable) and [get_it](https://pub.dev/packages/get_it)
 - Testing with [mockito](https://pub.dev/packages/mockito) and [bloc_test](https://pub.dev/packages/bloc_test)
 
+## Screenshots
+
+<p>
+<img src="https://raw.githubusercontent.com/excogitatr/https://aiserrock/news_app/blob/master/img/news_app1.png" alt="Screen 1" width="250">
+</p>
+
 
 ## Installation
 
