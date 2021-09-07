@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:news_app/presentation/general_widgets/custom_bottom_nav_bar.dart';
 import 'package:news_app/presentation/pages/favorite_page/favorite.dart';
 import 'package:news_app/presentation/pages/home_page/home.dart';
@@ -51,9 +52,9 @@ class _RootNavigationState extends State<RootNavigation> {
                 unselectedColor: Colors.grey,
                 backgroundColor: Colors.white,
                 items: [
-                  BottomBarItem(icon:Icons.home, label: 'Home'),
-                  BottomBarItem(icon: Icons.favorite, label: 'Favorite'),
-                  BottomBarItem(icon: Icons.person, label: 'Profile'),
+                  BottomBarItem(pathToIcon: Svgs.home, label: 'Home'),
+                  BottomBarItem(pathToIcon: Svgs.favorite, label: 'Favorite'),
+                  BottomBarItem(pathToIcon: Svgs.profile, label: 'Profile'),
                 ],
                 onTabSelected: onSelectedTab,
                 height: 66,

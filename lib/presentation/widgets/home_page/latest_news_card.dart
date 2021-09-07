@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:news_app/domain/entities/news.dart';
+import 'package:news_app/presentation/navigator/router.dart';
 import 'package:news_app/styles/styles.dart';
 
 class LatestNewsCards extends StatelessWidget {
@@ -29,7 +30,9 @@ class LatestNewsCards extends StatelessWidget {
                 color: Colors.transparent,
                 child: InkWell(
                   borderRadius: BorderRadius.circular(8),
-                  onTap: () {},
+                  onTap: () {
+                    Navigator.pushNamed(context, Routs.DETAILS_FROM_HOME);
+                  },
                 ),
               ),
             ],

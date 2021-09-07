@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:news_app/resources/resources.dart';
 
 class BottomBarItem {
-  final IconData icon;
+  final String pathToIcon;
   final String label;
 
-  BottomBarItem({required this.icon, required this.label});
+  BottomBarItem({required this.pathToIcon, required this.label});
 }
 
 class CustomBottomNavBar extends StatelessWidget {
@@ -76,10 +78,11 @@ class CustomBottomNavBar extends StatelessWidget {
             mainAxisSize: MainAxisSize.min,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Icon(
-                item.icon,
+              SvgPicture.asset(
+                items[index].pathToIcon,
                 color: color,
-                size: iconSize,
+                height: iconSize,
+                width: iconSize,
               ),
               Text(
                 item.label,

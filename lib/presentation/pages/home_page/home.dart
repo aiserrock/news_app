@@ -1,12 +1,15 @@
 import 'package:connectivity/connectivity.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:news_app/data/helpers/network_cheker.dart';
 import 'package:news_app/data/repositories/repository.dart';
-import 'package:news_app/presentation/general_widgets/custom_search.dart';
-import 'package:news_app/presentation/widgets/home_page/bell_button.dart';
 import 'package:news_app/presentation/widgets/home_page/home_bloc/home_bloc.dart';
 import 'package:news_app/presentation/widgets/home_page/latest_news_card.dart';
+import 'package:news_app/presentation/widgets/home_page/row_with_select_all_button.dart';
+import 'package:news_app/presentation/widgets/home_page/search_with_bell.dart';
+import 'package:news_app/resources/resources.dart';
+import 'package:news_app/styles/styles.dart';
 
 class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);
@@ -48,22 +51,9 @@ class _HomeState extends State<Home> {
     return Scaffold(
       body: Column(
         children: [
-          Column(
-            children: [
-              SizedBox(height: 60),
-              Padding(
-                padding: EdgeInsets.symmetric(horizontal: 15),
-                child: Row(
-                  children: [
-                    Expanded(child: CustomSearch()),
-                    SizedBox(width: 16),
-                    BellButton(),
-                  ],
-                ),
-              ),
-              SizedBox(height: 24),
-            ],
-          ),
+          SearchWithBell(),
+          RowWithSeeAllButton(),
+          SizedBox(height: 16),
           Expanded(
             child: BlocConsumer<HomeBloc, HomeState>(
               bloc: bloc,

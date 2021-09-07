@@ -14,6 +14,13 @@ class ConstantsTextStyle {
     color: Colors.white,
   );
 
+  static const tsNewYorkSmall18 = TextStyle(
+    fontFamily: 'NewYork',
+    fontWeight: FontWeight.w700,
+    fontSize: 18,
+    height: 20.8/18,
+  );
+
   static const tsNewYorkBold16 = TextStyle(
     fontFamily: 'NewYork',
     fontWeight: FontWeight.w700,
@@ -27,6 +34,15 @@ class ConstantsTextStyle {
     fontSize: 12,
     height: 16.37/12,
   );
+
+  static const tsNunitoLight12Blue = TextStyle(
+    fontFamily: 'Nunito',
+    fontWeight: FontWeight.w600,
+    fontSize: 12,
+    height: 16.37/12,
+    color: ConstantsColor.kSecondary,
+  );
+
   static const tsNunitoLight10 = TextStyle(
     fontFamily: 'Nunito',
     fontWeight: FontWeight.w400,
