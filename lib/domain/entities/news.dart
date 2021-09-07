@@ -20,13 +20,13 @@ class NewsResponse {
 
 @JsonSerializable()
 class Article {
-  final Source source;
-  final String author;
-  final String title;
+  final Source? source;
+  final String? author;
+  final String? title;
   final String? description;
-  final String url;
-  final String urlToImage;
-  final String publishedAt;
+  final String? url;
+  final String? urlToImage;
+  final String? publishedAt;
   final String? content;
 
   Article(

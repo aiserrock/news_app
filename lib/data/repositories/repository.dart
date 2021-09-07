@@ -26,10 +26,7 @@ class RepositoryImpl extends Repository {
         Constants.EVERYTHING_NEWS_ENDPOINT,
         params,
       );
-      var tmp = uri;
-
       var response = await http.get(uri);
-
       if (response.statusCode != 200) throw '';
 
       var newsResponse = NewsResponse.fromJson(json.decode(response.body));

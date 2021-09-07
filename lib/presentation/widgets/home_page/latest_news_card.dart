@@ -69,7 +69,7 @@ class Content extends StatelessWidget {
             'by ${articles[index].author}',
             style: ConstantsTextStyle.tsNunitoReguler10,
           ),
-          Text(articles[index].title,
+          Text(articles[index].title ?? '',
               style: ConstantsTextStyle.tsNewYorkSmallSemibold16),
           SizedBox(height: 32),
           Text(
@@ -97,7 +97,7 @@ class CarBacking extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Image.network(
-      articles[index].urlToImage,
+      articles[index].urlToImage ?? '',
       fit: BoxFit.cover,
       width: MediaQuery.of(context).size.width * 0.856,
       height: 240,

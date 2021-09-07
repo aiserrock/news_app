@@ -25,13 +25,15 @@ Map<String, dynamic> _$NewsResponseToJson(NewsResponse instance) =>
 
 Article _$ArticleFromJson(Map<String, dynamic> json) {
   return Article(
-    Source.fromJson(json['source'] as Map<String, dynamic>),
-    json['author'] as String,
-    json['title'] as String,
+    json['source'] == null
+        ? null
+        : Source.fromJson(json['source'] as Map<String, dynamic>),
+    json['author'] as String?,
+    json['title'] as String?,
     json['description'] as String?,
-    json['url'] as String,
-    json['urlToImage'] as String,
-    json['publishedAt'] as String,
+    json['url'] as String?,
+    json['urlToImage'] as String?,
+    json['publishedAt'] as String?,
     json['content'] as String?,
   );
 }

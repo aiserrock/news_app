@@ -77,17 +77,6 @@ class _HomeState extends State<Home> {
                         itemCount: articles.length + (state.isLoading ? 1 : 0),
                         controller: scrollController,
                         itemBuilder: (context, index) {
-                          if (index == 0) {
-                            return Row(
-                              children: [
-                                SizedBox(width: 15),
-                                LatestNewsCards(
-                                  articles: articles,
-                                  index: index,
-                                ),
-                              ],
-                            );
-                          }
                           if (index < articles.length) {
                             return LatestNewsCards(
                               articles: articles,
