@@ -46,7 +46,7 @@ API: https://newsapi.org/docs/get-started
 
 ## Thanks to
 
-- [Alex Adrianov](https://github.com/Alex-A4) (For mentoring)
+- [Alex Adrianov](https://github.com/Alex-A4) For mentoring
 
 ## Getting Started
 
