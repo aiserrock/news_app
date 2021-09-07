@@ -10,8 +10,8 @@
 Test task for the 'SOCOLOV' jewelry company for a position Flutter mobile developer.  
 A simple app to demonstrate Clean Architecture with RestAPI, flutter_bloc, mokito.
 
-Figma design: https://www.figma.com/community/file/975336242667665188
-API: https://newsapi.org/docs/get-started
+Figma design: https://www.figma.com/community/file/975336242667665188  
+API: https://newsapi.org/docs/get-started  
 
 ## "Production level" implementations
 
