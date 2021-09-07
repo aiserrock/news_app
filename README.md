@@ -3,7 +3,7 @@
 [![Actions Status](https://github.com/excogitatr/rick-and-morty-info/workflows/deploy/badge.svg?branch=v1.1.0)](https://github.com/excogitatr/rick-and-morty-info/actions?query=workflow%3Adeploy)
 [![Actions Status](https://github.com/excogitatr/rick-and-morty-info/workflows/build/badge.svg)](https://github.com/excogitatr/rick-and-morty-info/actions?query=workflow%3Abuild)
 [![codecov](https://codecov.io/gh/excogitatr/rick-and-morty-info/branch/master/graph/badge.svg)](https://codecov.io/gh/excogitatr/rick-and-morty-info)
-[![Flutter version](https://img.shields.io/badge/flutter-v2.0.1-blue?logo=flutter)](https://flutter.dev/docs/development/tools/sdk/releases)
+[![Flutter version](https://img.shields.io/badge/flutter-v2.12.0-blue?logo=flutter)](https://flutter.dev/docs/development/tools/sdk/releases)
 [![style: effective dart](https://img.shields.io/badge/style-effective_dart-40c4ff.svg)](https://github.com/tenhobi/effective_dart)
 [![License: MIT](https://img.shields.io/badge/license-MIT-purple.svg)](https://opensource.org/licenses/MIT)
 
