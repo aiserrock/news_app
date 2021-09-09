@@ -1,4 +1,5 @@
 import 'package:json_annotation/json_annotation.dart';
+import 'package:news_app/domain/entities/convertrs/custom_date_time_converter.dart';
 
 part 'news.g.dart';
 
@@ -19,6 +20,7 @@ class NewsResponse {
 }
 
 @JsonSerializable()
+@CustomDateTimeConverter()
 class Article {
   final Source? source;
   final String? author;
@@ -26,7 +28,7 @@ class Article {
   final String? description;
   final String? url;
   final String? urlToImage;
-  final String? publishedAt;
+  final DateTime? publishedAt;
   final String? content;
 
   Article(

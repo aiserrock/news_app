@@ -33,7 +33,7 @@ Article _$ArticleFromJson(Map<String, dynamic> json) {
     json['description'] as String?,
     json['url'] as String?,
     json['urlToImage'] as String?,
-    json['publishedAt'] as String?,
+    const CustomDateTimeConverter().fromJson(json['publishedAt'] as String?),
     json['content'] as String?,
   );
 }
@@ -45,7 +45,8 @@ Map<String, dynamic> _$ArticleToJson(Article instance) => <String, dynamic>{
       'description': instance.description,
       'url': instance.url,
       'urlToImage': instance.urlToImage,
-      'publishedAt': instance.publishedAt,
+      'publishedAt':
+          const CustomDateTimeConverter().toJson(instance.publishedAt),
       'content': instance.content,
     };
 
