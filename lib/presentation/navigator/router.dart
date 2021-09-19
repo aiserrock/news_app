@@ -34,15 +34,11 @@ final routes = <String, WidgetBuilder>{
 Route<dynamic> generateRoute(RouteSettings settings) {
   switch (settings.name) {
     case Routs.DETAILS_FROM_HOME:
-      final arguments = settings.arguments;
-      final movieId = arguments is int ? arguments : 0;
       return MaterialPageRoute(
         builder: (_) => Details(),
         settings: settings,
       );
     case Routs.SEE_ALL:
-      final arguments = settings.arguments;
-      final movieId = arguments is int ? arguments : 0;
       return MaterialPageRoute(
         builder: (_) => SeeAll(),
         settings: settings,

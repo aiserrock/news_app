@@ -23,7 +23,7 @@ class LatestNewsCards extends StatelessWidget {
           width: MediaQuery.of(context).size.width * 0.856,
           child: Stack(
             children: [
-              CarBacking(articles: articles, index: index),
+              CardBacking(articles: articles, index: index),
               CardGradient(),
               Content(articles: articles, index: index),
               Material(
@@ -31,7 +31,11 @@ class LatestNewsCards extends StatelessWidget {
                 child: InkWell(
                   borderRadius: BorderRadius.circular(8),
                   onTap: () {
-                    Navigator.pushNamed(context, Routs.DETAILS_FROM_HOME);
+                    Navigator.pushNamed(
+                      context,
+                      Routs.DETAILS_FROM_HOME,
+                      arguments: articles[index],
+                    );
                   },
                 ),
               ),
@@ -84,8 +88,8 @@ class Content extends StatelessWidget {
   }
 }
 
-class CarBacking extends StatelessWidget {
-  const CarBacking({
+class CardBacking extends StatelessWidget {
+  const CardBacking({
     Key? key,
     required this.articles,
     required this.index,

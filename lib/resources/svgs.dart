@@ -4,6 +4,7 @@ class Svgs {
   Svgs._();
 
   static const String bell = 'assets/icons/bell.svg';
+  static const String cupertinoRowBack = 'assets/icons/cupertinoRowBack.svg';
   static const String doubleHeart = 'assets/icons/doubleHeart.svg';
   static const String favorite = 'assets/icons/favorite.svg';
   static const String forwardArrow = 'assets/icons/forward_arrow.svg';
