@@ -15,6 +15,7 @@ class MyApp extends StatelessWidget {
       theme: theme(),
       routes: routes,
       initialRoute: Routs.ROOT,
+      onGenerateRoute: generateRoute,
     );
   }
 }

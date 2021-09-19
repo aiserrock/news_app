@@ -9,8 +9,6 @@ import 'package:news_app/presentation/widgets/home_page/home_bloc/home_bloc.dart
 import 'package:news_app/presentation/widgets/home_page/latest_news_card.dart';
 import 'package:news_app/presentation/widgets/home_page/row_with_select_all_button.dart';
 import 'package:news_app/presentation/widgets/home_page/search_with_bell.dart';
-import 'package:news_app/resources/resources.dart';
-import 'package:news_app/styles/styles.dart';
 
 class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);
