@@ -15,6 +15,7 @@ dependencies:
   provider: ^5.0.0
   cupertino_icons: ^1.0.2
   flutter_svg: ^0.22.0
+  simple_gradient_text: ^1.2.2
 
   # Logic section
   flutter_bloc: ^7.1.0
@@ -55,3 +56,6 @@ flutter:
       fonts:
         - asset: assets/fonts/new_york/NewYork-Bold.ttf
         - asset: assets/fonts/new_york/NewYork-SmallSemibold.ttf
+    - family: SfPro
+      fonts:
+        - asset: assets/fonts/sf_pro/SF-PRO-Text-Semibold.ttf

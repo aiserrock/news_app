@@ -2,12 +2,9 @@ import 'dart:ui';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import 'package:intl/intl.dart';
 import 'package:news_app/domain/entities/convertrs/custom_date_time_converter.dart';
 import 'package:news_app/domain/entities/news.dart';
 import 'package:news_app/presentation/widgets/detail_page/row_back.dart';
-import 'package:news_app/resources/resources.dart';
 import 'package:news_app/styles/styles.dart';
 
 class Body extends StatelessWidget {
@@ -35,28 +32,20 @@ class Body extends StatelessWidget {
                   child: image,
                 ),
                 Padding(
-                  padding: EdgeInsets.only(top: size.height * 0.4394),
+                  padding: EdgeInsets.only(top: size.height * 0.48),
                   child: _ContentRoundedContainer(article: article),
                 ),
-                Padding(
-                  padding: EdgeInsets.only(
-                      top: size.height * 0.363),
-                  child: Padding(
-                      padding: EdgeInsets.symmetric(horizontal: 32),
-                      child: Flexible(fit: FlexFit.tight,child: _HeaderRoundedContainer(article: article))),
+                Positioned(
+                  top: size.height * 0.373,
+                  left: 32,
+                  right: 32,
+                  child: SizedBox(
+                    height: 141,
+                    child: _HeaderRoundedContainer(article: article),
+                  ),
                 ),
               ],
             ),
-          ),
-        ),
-        Positioned(
-          bottom: 48,
-          right: 15,
-          child: FloatingActionButton(
-            elevation: 0,
-            backgroundColor: ConstantsColor.kPrimary,
-            onPressed: () {},
-            child: SvgPicture.asset(Svgs.doubleHeart),
           ),
         ),
         Positioned(child: RowBack()),
@@ -110,34 +99,31 @@ class _HeaderRoundedContainer extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        color: ConstantsColor.kOpacity50Gray,
+        color: ConstantsColor.kOpacity70Gray,
         borderRadius: BorderRadius.all(Radius.circular(16)),
       ),
       child: Padding(
         padding: EdgeInsets.symmetric(horizontal: 24, vertical: 16),
-        child: Container(
-          child: BackdropFilter(
-            filter: ImageFilter.blur(sigmaX: 0, sigmaY: 0),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  CustomDateTimeConverter.stringFromDate(article.publishedAt),
-                  style: ConstantsTextStyle.tsNunitoBold12,
-                ),
-                SizedBox(height: 8),
-                Text(
-                  article.title ?? 'No title',
-                  style: ConstantsTextStyle.tsNewYorkBold16,
-                ),
-                SizedBox(height: 8),
-                Text(
-                  'Published by ${article.author ?? ''}',
-                  style: ConstantsTextStyle.tsNunitoExtraBold10,
-                ),
-              ],
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              CustomDateTimeConverter.stringFromDate(article.publishedAt),
+              style: ConstantsTextStyle.tsNunitoBold12,
             ),
-          ),
+            SizedBox(height: 8),
+            Expanded(
+              child: Text(
+                article.title ?? 'No title',
+                style: ConstantsTextStyle.tsNewYorkBold16,
+              ),
+            ),
+            SizedBox(height: 8),
+            Text(
+              'Published by ${article.author ?? ''}',
+              style: ConstantsTextStyle.tsNunitoExtraBold10,
+            ),
+          ],
         ),
       ),
     );

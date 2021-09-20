@@ -2,7 +2,6 @@ import 'package:connectivity/connectivity.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:news_app/data/helpers/network_cheker.dart';
 import 'package:news_app/data/repositories/repository.dart';
 import 'package:news_app/presentation/widgets/home_page/home_bloc/home_bloc.dart';

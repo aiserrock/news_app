@@ -41,7 +41,10 @@ class RowWithSeeAllButton extends StatelessWidget {
                 ],
               ),
               onTap: () {
-                Navigator.pushNamed(context, Routs.SEE_ALL);
+                Navigator.pushNamed(
+                  context,
+                  Routs.SEE_ALL,
+                );
               },
             ),
           ),

@@ -26,6 +26,7 @@ final routes = <String, WidgetBuilder>{
   Routs.FAVORITE: (_) => Favorite(),
   Routs.SEARCH: (_) => Search(),
   Routs.PROFILE: (_) => Profile(),
+  Routs.SEE_ALL :(_)=> SeeAll(),
 };
 
 /// Роуты, в которые необходимо передавать данные.
@@ -36,11 +37,6 @@ Route<dynamic> generateRoute(RouteSettings settings) {
     case Routs.DETAILS_FROM_HOME:
       return MaterialPageRoute(
         builder: (_) => Details(),
-        settings: settings,
-      );
-    case Routs.SEE_ALL:
-      return MaterialPageRoute(
-        builder: (_) => SeeAll(),
         settings: settings,
       );
     default:

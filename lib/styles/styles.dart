@@ -1,5 +1,7 @@
 library styles;
 
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 
 part 'colors.dart';
@@ -105,4 +107,15 @@ class ConstantsTextStyle {
     fontSize: 14,
     height: 19.1/14,
   );
+  static const tsSfProSemibold17 = TextStyle(
+    fontFamily: 'SfPro',
+    fontWeight: FontWeight.w600,
+    fontSize: 17,
+    height: 22/17,
+    letterSpacing: -0.41,
+  );
+
+  final Shader linearGradient = LinearGradient(
+    colors:[Color(0xffFF3A44), Color(0xffFF8086)],
+  ).createShader(Rect.fromLTWH(0.0, 0.0, 200.0, 70.0));
 }
