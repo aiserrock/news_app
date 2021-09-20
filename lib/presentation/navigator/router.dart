@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:news_app/domain/entities/news.dart';
 import 'package:news_app/presentation/pages/details_page/detail.dart';
 import 'package:news_app/presentation/pages/favorite_page/favorite.dart';
 import 'package:news_app/presentation/pages/home_page/home.dart';
@@ -14,6 +15,7 @@ class Routs{
   static const HOME = '/home';
   static const SEARCH = '/home/search';
   static const DETAILS_FROM_HOME = '/home/details';
+  static const DETAILS_FROM_SEE_ALL = '/home/seeAll/details';
   static const SEE_ALL = '/home/seeAll';
   static const FAVORITE = '/favorite';
   static const PROFILE = '/profile';
@@ -26,7 +28,7 @@ final routes = <String, WidgetBuilder>{
   Routs.FAVORITE: (_) => Favorite(),
   Routs.SEARCH: (_) => Search(),
   Routs.PROFILE: (_) => Profile(),
-  Routs.SEE_ALL :(_)=> SeeAll(),
+  Routs.SEE_ALL: (_) => SeeAll(),
 };
 
 /// Роуты, в которые необходимо передавать данные.
@@ -36,7 +38,12 @@ Route<dynamic> generateRoute(RouteSettings settings) {
   switch (settings.name) {
     case Routs.DETAILS_FROM_HOME:
       return MaterialPageRoute(
-        builder: (_) => Details(),
+        builder: (_) => Details(article: settings.arguments as Article,),
+        settings: settings,
+      );
+    case Routs.DETAILS_FROM_SEE_ALL:
+      return MaterialPageRoute(
+        builder: (_) => Details(article: settings.arguments as Article,),
         settings: settings,
       );
     default:

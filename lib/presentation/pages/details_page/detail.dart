@@ -7,11 +7,12 @@ import 'package:news_app/resources/resources.dart';
 import 'package:news_app/styles/styles.dart';
 
 class Details extends StatelessWidget {
-  const Details({Key? key}) : super(key: key);
+  const Details({Key? key, required this.article}) : super(key: key);
 
+  final Article article;
   @override
   Widget build(BuildContext context) {
-    final article = ModalRoute.of(context)!.settings.arguments as Article;
+    //final article = ModalRoute.of(context)!.settings.arguments as Article;
     return Scaffold(
       body: Body(article: article),
       floatingActionButton: FloatingActionButton(

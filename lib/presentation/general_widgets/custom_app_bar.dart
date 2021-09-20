@@ -20,14 +20,14 @@ class CustomAppBar extends StatelessWidget {
                 Svgs.cupertinoRowBack,
                 height: 15,
               ),
+
             ),
             Expanded(
-              child: Center(
-                child: GradientText(
-                  'Hot Updates',
-                  style: ConstantsTextStyle.tsSfProSemibold17,
-                  colors: [Color(0xffFF3A44), Color(0xffFF8086)],
-                ),
+              child: GradientText(
+                'Hot Updates',
+                textAlign: TextAlign.center,
+                style: ConstantsTextStyle.tsSfProSemibold17,
+                colors: [Color(0xffFF3A44), Color(0xffFF8086)],
               ),
             ),
             SizedBox(width: 64),

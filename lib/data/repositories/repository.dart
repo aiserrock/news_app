@@ -37,8 +37,26 @@ class RepositoryImpl extends Repository {
   }
 
   @override
-  Future<FutureResponse<List<Article>>> getTopHeadlinesNews() {
-    // TODO: implement getTopHeadlinesNews
-    throw UnimplementedError();
+  Future<FutureResponse<NewsResponse>> getTopHeadlinesNews() async{
+    try {
+      if (!await checker.hasInternet) throw ConstantsLocalization.NO_INTERNET;
+      final params = {
+        'country':'us',
+        'apiKey': Constants.API_KEY,
+      };
+
+      var uri = Uri.https(
+        Constants.BASE_URL,
+        Constants.TOP_HEADLINES_NEWS_ENDPOINT,
+        params,
+      );
+      var response = await http.get(uri);
+      if (response.statusCode != 200) throw '';
+
+      var newsResponse = NewsResponse.fromJson(json.decode(response.body));
+      return FutureResponse.success(newsResponse);
+    } catch (e) {
+      return FutureResponse.fail(e.toString());
+    }
   }
 }

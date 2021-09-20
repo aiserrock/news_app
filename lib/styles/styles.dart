@@ -8,6 +8,14 @@ part 'colors.dart';
 
 //for flutter height = line height / fontSize
 class ConstantsTextStyle {
+  static const tsNewYorkSmallSemibold14 = TextStyle(
+    fontFamily: 'NewYork',
+    fontWeight: FontWeight.w600,
+    fontSize: 14,
+    height: 20.8/14,
+    color: Colors.black,
+  );
+
   static const tsNewYorkSmallSemibold16 = TextStyle(
     fontFamily: 'NewYork',
     fontWeight: FontWeight.w700,
@@ -76,6 +84,14 @@ class ConstantsTextStyle {
     fontWeight: FontWeight.w600,
     fontSize: 14,
     height: 19.1/14,
+    color:Colors.black,
+  );
+  static const tsNunitoSemiBold14Blue = TextStyle(
+    fontFamily: 'Nunito',
+    fontWeight: FontWeight.w600,
+    fontSize: 14,
+    height: 19.1/14,
+    color:Color(0xFF0080FF),
   );
   static const tsNunitoBold12 = TextStyle(
     fontFamily: 'Nunito',
@@ -101,11 +117,12 @@ class ConstantsTextStyle {
     fontSize: 16,
     height: 21.82/16,
   );
-  static const tsNunitoBlack16 = TextStyle(
+  static const tsNunitoBlack14 = TextStyle(
     fontFamily: 'Nunito',
     fontWeight: FontWeight.w900,
     fontSize: 14,
     height: 19.1/14,
+    color: Colors.black,
   );
   static const tsSfProSemibold17 = TextStyle(
     fontFamily: 'SfPro',
@@ -114,8 +131,4 @@ class ConstantsTextStyle {
     height: 22/17,
     letterSpacing: -0.41,
   );
-
-  final Shader linearGradient = LinearGradient(
-    colors:[Color(0xffFF3A44), Color(0xffFF8086)],
-  ).createShader(Rect.fromLTWH(0.0, 0.0, 200.0, 70.0));
 }

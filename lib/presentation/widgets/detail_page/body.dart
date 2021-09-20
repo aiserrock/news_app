@@ -6,6 +6,7 @@ import 'package:news_app/domain/entities/convertrs/custom_date_time_converter.da
 import 'package:news_app/domain/entities/news.dart';
 import 'package:news_app/presentation/widgets/detail_page/row_back.dart';
 import 'package:news_app/styles/styles.dart';
+import 'package:news_app/data/extentions/power_string.dart';
 
 class Body extends StatelessWidget {
   const Body({Key? key, required this.article}) : super(key: key);
@@ -78,14 +79,43 @@ class _ContentRoundedContainer extends StatelessWidget {
           SizedBox(height: 88),
           Padding(
             padding: EdgeInsets.symmetric(horizontal: 15),
-            child: Text(
-              article.content!,
-              style: ConstantsTextStyle.tsNunitoSemiBold14,
-            ),
+            child: setContent(),
           ),
         ],
       ),
     );
+  }
+
+  RichText setContent() {
+    final RichText content;
+    if (article.content != null) {
+      var allText = article.content!.removeLast().removeFirst();
+      var firstWord = article.content!.first();
+      print(allText);
+      print(firstWord);
+      content = RichText(
+        text: TextSpan(
+          children: [
+            TextSpan(
+              text: firstWord,
+              style: ConstantsTextStyle.tsNunitoBlack14,
+            ),
+            TextSpan(
+              text: allText,
+              style: ConstantsTextStyle.tsNunitoSemiBold14,
+            ),
+          ],
+        ),
+      );
+    } else {
+      content = RichText(
+        text: const TextSpan(
+          text: 'Content not found',
+          style: ConstantsTextStyle.tsNunitoSemiBold14,
+        ),
+      );
+    }
+    return content;
   }
 }
 
@@ -111,14 +141,14 @@ class _HeaderRoundedContainer extends StatelessWidget {
               CustomDateTimeConverter.stringFromDate(article.publishedAt),
               style: ConstantsTextStyle.tsNunitoBold12,
             ),
-            SizedBox(height: 8),
+            const SizedBox(height: 8),
             Expanded(
               child: Text(
                 article.title ?? 'No title',
                 style: ConstantsTextStyle.tsNewYorkBold16,
               ),
             ),
-            SizedBox(height: 8),
+            const SizedBox(height: 8),
             Text(
               'Published by ${article.author ?? ''}',
               style: ConstantsTextStyle.tsNunitoExtraBold10,

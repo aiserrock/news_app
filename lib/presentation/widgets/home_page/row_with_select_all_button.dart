@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:news_app/presentation/general_widgets/linked_button.dart';
 import 'package:news_app/presentation/navigator/router.dart';
 import 'package:news_app/resources/resources.dart';
 import 'package:news_app/styles/styles.dart';
@@ -21,32 +22,9 @@ class RowWithSeeAllButton extends StatelessWidget {
               style: ConstantsTextStyle.tsNewYorkSmall18,
             ),
           ),
-          Material(
-            color: Colors.transparent,
-            child: InkWell(
-              child: Row(
-                children: [
-                  Text(
-                    'See All',
-                    style: ConstantsTextStyle.tsNunitoLight12Blue,
-                  ),
-                  SizedBox(width: 16),
-                  SvgPicture.asset(
-                    Svgs.forwardArrow,
-                    height: 12,
-                    width: 9.85,
-                    fit: BoxFit.contain,
-                    color: ConstantsColor.kSecondary,
-                  ),
-                ],
-              ),
-              onTap: () {
-                Navigator.pushNamed(
-                  context,
-                  Routs.SEE_ALL,
-                );
-              },
-            ),
+          LinkedButtonWidget(
+            text: 'See All',
+            pathToRoute: Routs.SEE_ALL,
           ),
         ],
       ),

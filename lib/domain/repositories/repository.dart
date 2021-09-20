@@ -3,5 +3,5 @@ import 'package:news_app/domain/entities/news.dart';
 
 abstract class Repository{
   Future<FutureResponse<NewsResponse>> getEverythingNews();
-  Future<FutureResponse<List<Article>>> getTopHeadlinesNews();
+  Future<FutureResponse<NewsResponse>> getTopHeadlinesNews();
 }
