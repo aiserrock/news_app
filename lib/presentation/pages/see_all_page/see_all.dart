@@ -51,10 +51,7 @@ class _SeeAllState extends State<SeeAll> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: PreferredSize(
-        preferredSize: Size.fromHeight(kToolbarHeight),
-        child: CustomAppBar(),
-      ),
+      appBar: CustomAppBar(title: 'Hot Updates'),
       body: BlocConsumer<SeeAllBloc, SeeAllState>(
         bloc: bloc,
         listener: (context, state) {
@@ -69,7 +66,7 @@ class _SeeAllState extends State<SeeAll> {
           state = state as SeeAllDataState;
           final articles = state.articles;
           return ListView.builder(
-            padding: EdgeInsets.only(top: 28),
+            padding: EdgeInsets.only(top: 16),
             itemCount: articles.length + (state.isLoading ? 1 : 0),
             controller: scrollController,
             itemBuilder: (context, index) {
