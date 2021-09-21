@@ -11,24 +11,72 @@ class Search extends StatelessWidget {
     return Scaffold(
       appBar: CustomAppBar(titleWidget: _SearchPageWidget()),
       body: Column(
-        children: [
-          SizedBox(height: 16),
-          _FilterCarousel()
-        ],
+        children: [SizedBox(height: 16), _FilterCarousel()],
       ),
     );
   }
 }
 
 class _FilterCarousel extends StatelessWidget {
-  const _FilterCarousel({
-    Key? key,
+  _FilterCarousel({
+    Key? key, this.onTabSelected,
   }) : super(key: key);
+  final ValueChanged<int>? onTabSelected;
+
+  final List<String> items = [
+    'buisness',
+    'entertainment',
+    'general',
+    'health',
+    'science',
+    'sports',
+    'technology'
+  ];
 
   @override
   Widget build(BuildContext context) {
-    return Row(children: [Container()],);
+    List<Widget> chipItems = List.generate(items.length, (int index) {
+      return _buildChipItem(
+        item: items[index],
+        index: index,
+      );
+    });
+    return Row(
+      children: [Container()],
+    );
   }
+}
+
+Widget _buildChipItem({
+  required int index,
+  ValueChanged<int>? onPressed,
+  required String item,
+}) {
+  Color color = currentIndex == index ? selectedColor : unselectedColor;
+  return Expanded(
+    child: SizedBox(
+      height: height,
+      child: IconButton(
+        onPressed: () => onPressed(index),
+        icon: Column(
+          mainAxisSize: MainAxisSize.min,
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            SvgPicture.asset(
+              items[index].pathToIcon,
+              color: color,
+              height: iconSize,
+              width: iconSize,
+            ),
+            Text(
+              item.label,
+              style: TextStyle(color: color),
+            )
+          ],
+        ),
+      ),
+    ),
+  );
 }
 
 class _SearchPageWidget extends StatelessWidget {
