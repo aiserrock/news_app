@@ -29,7 +29,7 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
   Stream<HomeState> loadArticle() async* {
     yield HomeDataState(isLoading: true, articles: articles);
 
-    final response = await repository.getEverythingNews();
+    final response = await repository.getTopHeadlinesNews();
 
     if (response.hasData) {
       articles = response.data!.articles;

@@ -1,32 +1,40 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:news_app/presentation/navigator/router.dart';
 import 'package:news_app/resources/resources.dart';
+import 'package:news_app/styles/styles.dart';
 
 class CustomSearch extends StatelessWidget {
   const CustomSearch({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return TextField(
-      decoration: InputDecoration(
-          border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(16),
-            borderSide: BorderSide(
-              color: const Color(0xFFF0F1FA),
+    return Container(
+      decoration: BoxDecoration(
+        border: Border.all(color: ConstantsColor.kSearchBorder, width: 1),
+        borderRadius: BorderRadius.circular(16),
+      ),
+      height: 32,
+      child: InkWell(
+        borderRadius: BorderRadius.circular(16),
+        onTap: () => Navigator.pushNamed(context, Routs.SEARCH),
+        child: Row(
+          children: [
+            Expanded(
+              child: Padding(
+                padding: EdgeInsets.only(left: 16, top: 8, bottom: 8),
+                child: Text(
+                  'Dogecoin to the Moon...',
+                  style: ConstantsTextStyle.tsNunitoSemiBold12Search,
+                ),
+              ),
             ),
-          ),
-          contentPadding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-          isCollapsed: true,
-          hintText: 'Dogecoin to the Moon...',
-          hintStyle: TextStyle(color: const Color(0xFFA6A6A6)),
-          suffixIcon: Padding(
-            padding: EdgeInsets.symmetric(horizontal: 10),
-            child: SvgPicture.asset(Svgs.search),
-          ),
-          suffixIconConstraints: BoxConstraints(
-            maxHeight: 40,
-            maxWidth: 40,
-          )
+            Padding(
+              padding: EdgeInsets.only(right: 16, top: 8, bottom: 8),
+              child: SvgPicture.asset(Svgs.search),
+            )
+          ],
+        ),
       ),
     );
   }

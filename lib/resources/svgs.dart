@@ -11,4 +11,5 @@ class Svgs {
   static const String home = 'assets/icons/home.svg';
   static const String profile = 'assets/icons/profile.svg';
   static const String search = 'assets/icons/search.svg';
+  static const String searchClear = 'assets/icons/searchClear.svg';
 }

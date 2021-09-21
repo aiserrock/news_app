@@ -79,6 +79,13 @@ class ConstantsTextStyle {
     fontSize: 12,
     height: 16.37/12,
   );
+  static const tsNunitoSemiBold12Search = TextStyle(
+    fontFamily: 'Nunito',
+    fontWeight: FontWeight.w600,
+    fontSize: 12,
+    height: 16.37/12,
+    color: ConstantsColor.kSearchText,
+  );
   static const tsNunitoSemiBold14 = TextStyle(
     fontFamily: 'Nunito',
     fontWeight: FontWeight.w600,

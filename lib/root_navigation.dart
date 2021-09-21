@@ -41,23 +41,22 @@ class _RootNavigationState extends State<RootNavigation> {
           bottom: 40,
           left: 28,
           right: 28,
-          child: ClipRRect(
+          child: Material(
+            color: Colors.white,
             borderRadius: BorderRadius.circular(32),
-            child: Material(
-              child: CustomBottomNavBar(
-                currentIndex: _selectedTab,
-                iconSize: 24,
-                selectedColor: ConstantsColor.kPrimary,
-                unselectedColor: Colors.grey,
-                backgroundColor: Colors.white,
-                items: [
-                  BottomBarItem(pathToIcon: Svgs.home, label: 'Home'),
-                  BottomBarItem(pathToIcon: Svgs.favorite, label: 'Favorite'),
-                  BottomBarItem(pathToIcon: Svgs.profile, label: 'Profile'),
-                ],
-                onTabSelected: onSelectedTab,
-                height: 66,
-              ),
+            child: CustomBottomNavBar(
+              currentIndex: _selectedTab,
+              iconSize: 24,
+              selectedColor: ConstantsColor.kPrimary,
+              unselectedColor: Colors.grey,
+              backgroundColor: Colors.transparent,
+              items: [
+                BottomBarItem(pathToIcon: Svgs.home, label: 'Home'),
+                BottomBarItem(pathToIcon: Svgs.favorite, label: 'Favorite'),
+                BottomBarItem(pathToIcon: Svgs.profile, label: 'Profile'),
+              ],
+              onTabSelected: onSelectedTab,
+              height: 66,
             ),
           ),
         ),
