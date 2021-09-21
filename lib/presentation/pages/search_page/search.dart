@@ -1,119 +1,98 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:news_app/presentation/general_widgets/custom_app_bar.dart';
-import 'package:news_app/resources/resources.dart';
+import 'package:news_app/presentation/general_widgets/input_search_widget.dart';
+import 'package:news_app/styles/styles.dart';
 
-class Search extends StatelessWidget {
+class Search extends StatefulWidget {
   const Search({Key? key}) : super(key: key);
+
+  @override
+  _SearchState createState() => _SearchState();
+}
+
+class _SearchState extends State<Search> {
+
+
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CustomAppBar(titleWidget: _SearchPageWidget()),
+      appBar: CustomAppBar(titleWidget: InputSearchWidget()),
       body: Column(
-        children: [SizedBox(height: 16), _FilterCarousel()],
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          const SizedBox(height: 24),
+          _FilterCarousel(),
+          const SizedBox(height: 24),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 15),
+            child: Text('About 11,130,000 results for BitCoin'),
+          ),
+          const SizedBox(height: 16),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 15),
+            child: _NewsList(),
+          ),
+        ],
       ),
+    );
+  }
+}
+
+class _NewsList extends StatelessWidget {
+  const _NewsList({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      alignment: Alignment.center,
+      child: Text('List with news'),
     );
   }
 }
 
 class _FilterCarousel extends StatelessWidget {
   _FilterCarousel({
-    Key? key, this.onTabSelected,
+    Key? key,
   }) : super(key: key);
-  final ValueChanged<int>? onTabSelected;
 
   final List<String> items = [
-    'buisness',
-    'entertainment',
-    'general',
-    'health',
-    'science',
-    'sports',
-    'technology'
+    'Buisness',
+    'Entertainment',
+    'General',
+    'Health',
+    'Science',
+    'Sports',
+    'Technology'
   ];
 
   @override
   Widget build(BuildContext context) {
-    List<Widget> chipItems = List.generate(items.length, (int index) {
-      return _buildChipItem(
-        item: items[index],
-        index: index,
-      );
-    });
-    return Row(
-      children: [Container()],
+    return SizedBox(
+      height: 32,
+      child: ListView(
+        padding: EdgeInsets.only(left: 15, right: 7),
+        scrollDirection: Axis.horizontal,
+        children: [
+          ...items.map((e) => _ChipElement(text: e)),
+        ],
+      ),
     );
   }
 }
 
-Widget _buildChipItem({
-  required int index,
-  ValueChanged<int>? onPressed,
-  required String item,
-}) {
-  Color color = currentIndex == index ? selectedColor : unselectedColor;
-  return Expanded(
-    child: SizedBox(
-      height: height,
-      child: IconButton(
-        onPressed: () => onPressed(index),
-        icon: Column(
-          mainAxisSize: MainAxisSize.min,
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            SvgPicture.asset(
-              items[index].pathToIcon,
-              color: color,
-              height: iconSize,
-              width: iconSize,
-            ),
-            Text(
-              item.label,
-              style: TextStyle(color: color),
-            )
-          ],
-        ),
-      ),
-    ),
-  );
-}
-
-class _SearchPageWidget extends StatelessWidget {
-  _SearchPageWidget({
-    Key? key,
-  }) : super(key: key);
-  final msgController = TextEditingController();
+class _ChipElement extends StatelessWidget {
+  const _ChipElement({Key? key, required this.text}) : super(key: key);
+  final String text;
 
   @override
   Widget build(BuildContext context) {
-    return TextField(
-      controller: msgController,
-      autofocus: false,
-      decoration: InputDecoration(
-        border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(16),
-          borderSide: BorderSide(
-            color: const Color(0xFFF0F1FA),
-          ),
-        ),
-        contentPadding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-        isCollapsed: true,
-        hintText: 'Dogecoin to the Moon...',
-        hintStyle: TextStyle(color: const Color(0xFFA6A6A6)),
-        suffixIconConstraints: BoxConstraints(
-          maxHeight: 40,
-          maxWidth: 44,
-        ),
-        suffixIcon: Padding(
-          padding: EdgeInsets.only(right: 16),
-          child: IconButton(
-            onPressed: () => msgController.clear(),
-            icon: SvgPicture.asset(
-              Svgs.searchClear,
-            ),
-          ),
-        ),
+    return Padding(
+      padding: EdgeInsets.only(right: 8),
+      child: ElevatedButton(
+        style: ConstantsButtonStyle.chipNonActive(),
+        onPressed: () => print(text.toLowerCase()),
+        child: Text(text),
       ),
     );
   }
