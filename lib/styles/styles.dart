@@ -20,7 +20,7 @@ class ConstantsTextStyle {
     fontWeight: FontWeight.w600,
     fontSize: 14,
     height: 20.8 / 14,
-    color: Colors.black,
+    color: Colors.white,
   );
 
   static const tsNewYorkSmallSemibold16 = TextStyle(
@@ -91,6 +91,7 @@ class ConstantsTextStyle {
     fontWeight: FontWeight.w600,
     fontSize: 12,
     height: 20.8 / 12,
+    color: Colors.white,
   );
   static const tsNunitoSemiBold12Search = TextStyle(
     fontFamily: 'Nunito',
@@ -156,6 +157,22 @@ class ConstantsTextStyle {
 class ConstantsButtonStyle {
   static ButtonStyle chipNonActive() {
     return ButtonStyle(
+      overlayColor: MaterialStateProperty.all(Colors.black12),
+      elevation: MaterialStateProperty.all(0),
+      backgroundColor: MaterialStateProperty.all(Colors.white),
+      foregroundColor: MaterialStateProperty.all(Colors.black),
+      shape: MaterialStateProperty.all(
+        RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular((16)),
+          side: BorderSide(color: ConstantsColor.kChipBorder),
+        ),
+      ),
+    );
+  }
+
+  static ButtonStyle chipActive() {
+    return ButtonStyle(
+      overlayColor: MaterialStateProperty.all(Colors.white24),
       elevation: MaterialStateProperty.all(0),
       backgroundColor: MaterialStateProperty.all(Colors.white),
       foregroundColor: MaterialStateProperty.all(Colors.black),

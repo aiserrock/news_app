@@ -19,14 +19,14 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
   @override
   Stream<HomeState> mapEventToState(HomeEvent event) async* {
     if (event is HomeInitialLoadEvent) {
-      yield* loadArticle();
+      yield* loadArticles();
     }
     if (event is HomeMoreLoadEvent) {
-      yield* loadArticle();
+      yield* loadArticles();
     }
   }
 
-  Stream<HomeState> loadArticle() async* {
+  Stream<HomeState> loadArticles() async* {
     yield HomeDataState(isLoading: true, articles: articles);
 
     final response = await repository.getTopHeadlinesNews();

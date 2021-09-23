@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:news_app/presentation/general_widgets/custom_bottom_nav_bar.dart';
-import 'package:news_app/presentation/pages/favorite_page/favorite.dart';
-import 'package:news_app/presentation/pages/home_page/home.dart';
-import 'package:news_app/presentation/pages/profile/profie.dart';
+import 'package:news_app/presentation/pages/favorite_page/screens/favorite.dart';
+import 'package:news_app/presentation/pages/home_page/screens/home.dart';
+import 'package:news_app/presentation/pages/profile/screens/profie.dart';
 import 'package:news_app/resources/resources.dart';
 import 'package:news_app/styles/styles.dart';
 

@@ -1,13 +1,13 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:news_app/domain/entities/news.dart';
-import 'package:news_app/presentation/pages/details_page/detail.dart';
-import 'package:news_app/presentation/pages/favorite_page/favorite.dart';
-import 'package:news_app/presentation/pages/home_page/home.dart';
-import 'package:news_app/presentation/pages/profile/profie.dart';
-import 'package:news_app/presentation/pages/search_page/search.dart';
-import 'package:news_app/presentation/pages/see_all_page/see_all.dart';
-import 'package:news_app/root_navigation.dart';
+import 'package:news_app/presentation/pages/details_page/screens/detail.dart';
+import 'package:news_app/presentation/pages/favorite_page/screens/favorite.dart';
+import 'package:news_app/presentation/pages/home_page/screens/home.dart';
+import 'package:news_app/presentation/pages/profile/screens/profie.dart';
+import 'package:news_app/presentation/pages/search_page/screens/search.dart';
+import 'package:news_app/presentation/pages/see_all_page/screens/see_all.dart';
+import 'package:news_app/presentation/navigator/root_navigation.dart';
 
 /// Константы для страниц, здесь должны быть перечислены все страницы без исключений
 class Routs{

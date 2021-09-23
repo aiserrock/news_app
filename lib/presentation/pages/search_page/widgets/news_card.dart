@@ -16,6 +16,7 @@ class NewsCard extends StatelessWidget {
       child: ClipRRect(
         borderRadius: BorderRadius.circular(8),
         child: Container(
+          height: 128,
           width: MediaQuery.of(context).size.width * 0.856,
           child: Stack(
             children: [
@@ -56,6 +57,7 @@ class Content extends StatelessWidget {
     return Padding(
       padding: EdgeInsets.all(8),
       child: Column(
+        mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(article.title ?? '',
@@ -94,7 +96,7 @@ class CardBacking extends StatelessWidget {
     return Image.network(
       article.urlToImage ?? '',
       fit: BoxFit.cover,
-      width: MediaQuery.of(context).size.width * 0.856,
+      width: MediaQuery.of(context).size.width,
       height: 128,
     );
   }

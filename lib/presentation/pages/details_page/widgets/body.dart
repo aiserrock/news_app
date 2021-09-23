@@ -4,7 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:news_app/domain/entities/convertrs/custom_date_time_converter.dart';
 import 'package:news_app/domain/entities/news.dart';
-import 'package:news_app/presentation/widgets/detail_page/row_back.dart';
+import 'package:news_app/presentation/pages/details_page/widgets/row_back.dart';
 import 'package:news_app/styles/styles.dart';
 import 'package:news_app/data/extentions/power_string.dart';
 
