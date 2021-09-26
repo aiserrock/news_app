@@ -1,22 +1,22 @@
-part of 'search_bloc.dart';
+part of 'every_news_bloc.dart';
 
-abstract class SearchState extends Equatable {
-  const SearchState();
+abstract class EveryNewsState extends Equatable {
+  const EveryNewsState();
 }
 
-class SearchInitial extends SearchState {
+class EveryNewsInitial extends EveryNewsState {
   @override
   List<Object> get props => [];
 }
 
-class SearchDataState extends SearchState {
+class EveryNewsDataState extends EveryNewsState {
   final bool isLoading;
   final String? error;
   final List<Article> articles;
   final int totalResults;
   final String chipText;
 
-  SearchDataState({
+  EveryNewsDataState({
     this.isLoading = false,
     this.error,
     this.articles = const [],

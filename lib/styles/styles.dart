@@ -174,8 +174,8 @@ class ConstantsButtonStyle {
     return ButtonStyle(
       overlayColor: MaterialStateProperty.all(Colors.white24),
       elevation: MaterialStateProperty.all(0),
-      backgroundColor: MaterialStateProperty.all(Colors.white),
-      foregroundColor: MaterialStateProperty.all(Colors.black),
+      backgroundColor: MaterialStateProperty.all(ConstantsColor.kPrimary),
+      foregroundColor: MaterialStateProperty.all(Colors.white),
       shape: MaterialStateProperty.all(
         RoundedRectangleBorder(
           borderRadius: BorderRadius.circular((16)),

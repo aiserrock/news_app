@@ -4,8 +4,8 @@ import 'package:news_app/domain/entities/news.dart';
 import 'package:news_app/presentation/navigator/router.dart';
 import 'package:news_app/styles/styles.dart';
 
-class NewsCard extends StatelessWidget {
-  const NewsCard({Key? key, required this.article}) : super(key: key);
+class EverythingNewsCard extends StatelessWidget {
+  const EverythingNewsCard({Key? key, required this.article}) : super(key: key);
 
   final Article article;
 

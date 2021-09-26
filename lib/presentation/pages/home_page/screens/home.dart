@@ -4,8 +4,11 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:news_app/data/helpers/network_cheker.dart';
 import 'package:news_app/data/repositories/repository.dart';
-import 'package:news_app/presentation/pages/home_page/bloc/home_bloc.dart';
+import 'package:news_app/presentation/pages/home_page/bloc/every_news_bloc/every_news_bloc.dart';
+import 'package:news_app/presentation/pages/home_page/bloc/latest_news_bloc/home_bloc.dart';
+import 'package:news_app/presentation/pages/home_page/widgets/filter_carousel.dart';
 import 'package:news_app/presentation/pages/home_page/widgets/latest_news_card.dart';
+import 'package:news_app/presentation/pages/home_page/widgets/news_list.dart';
 import 'package:news_app/presentation/pages/home_page/widgets/row_with_select_all_button.dart';
 import 'package:news_app/presentation/pages/home_page/widgets/search_with_bell.dart';
 
@@ -17,30 +20,35 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-  final bloc = HomeBloc(RepositoryImpl(NetworkCheckerImpl(Connectivity())));
+  final blocHorizontalNews =
+      HomeBloc(RepositoryImpl(NetworkCheckerImpl(Connectivity())));
+  final blocVerticalNews =
+      EveryNewsBloc(RepositoryImpl(NetworkCheckerImpl(Connectivity())));
   final scrollController = ScrollController();
 
   @override
   void initState() {
     super.initState();
-    bloc.add(HomeInitialLoadEvent());
+    blocHorizontalNews.add(HomeInitialLoadEvent());
+    blocVerticalNews.add(EveryNewsInitialLoadEvent());
     scrollController.addListener(_scrollListener);
   }
 
   @override
   void dispose() {
-    bloc.close();
+    blocHorizontalNews.close();
+    blocVerticalNews.close();
     scrollController.dispose();
     super.dispose();
   }
 
   void _scrollListener() {
     var isLoading = false;
-    if (bloc.state is HomeDataState) {
-      isLoading = (bloc.state as HomeDataState).isLoading;
+    if (blocHorizontalNews.state is HomeDataState) {
+      isLoading = (blocHorizontalNews.state as HomeDataState).isLoading;
     }
     if (scrollController.position.extentAfter < 200 && !isLoading) {
-      bloc.add(HomeMoreLoadEvent());
+      blocHorizontalNews.add(HomeMoreLoadEvent());
     }
   }
 
@@ -54,7 +62,7 @@ class _HomeState extends State<Home> {
           SizedBox(height: 16),
           Expanded(
             child: BlocConsumer<HomeBloc, HomeState>(
-              bloc: bloc,
+              bloc: blocHorizontalNews,
               listener: (context, state) {
                 if (state is HomeDataState && state.error != null) {
                   // show error
@@ -71,7 +79,7 @@ class _HomeState extends State<Home> {
                     SizedBox(
                       height: 240,
                       child: ListView.builder(
-                        padding: EdgeInsets.only(left: 15,right: 7),
+                        padding: EdgeInsets.only(left: 15, right: 7),
                         scrollDirection: Axis.horizontal,
                         itemCount: articles.length + (state.isLoading ? 1 : 0),
                         controller: scrollController,
@@ -86,7 +94,15 @@ class _HomeState extends State<Home> {
                         },
                       ),
                     ),
-                    Spacer(),
+                    const SizedBox(height: 24),
+                    FilterCarousel(bloc: blocVerticalNews),
+                    const SizedBox(height: 16),
+                    Expanded(
+                      child: NewsList(
+                        bloc: blocVerticalNews,
+                        scrollController: scrollController,
+                      ),
+                    ),
                   ],
                 );
               },

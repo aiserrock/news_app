@@ -4,4 +4,13 @@ class Constants{
   static const String EVERYTHING_NEWS_ENDPOINT = '/v2/everything';
   static const String TOP_HEADLINES_NEWS_ENDPOINT = '/v2/top-headlines';
   static const String SOURCES_ENDPOINT = '/v2/top-headlines/sources';
+  static const List<String> SEARCH_THEME = [
+    'Health',
+    'Buisness',
+    'Entertainment',
+    'General',
+    'Science',
+    'Sports',
+    'Technology'
+  ];
 }

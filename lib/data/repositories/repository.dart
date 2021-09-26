@@ -13,11 +13,11 @@ class RepositoryImpl extends Repository {
   RepositoryImpl(this.checker);
 
   @override
-  Future<FutureResponse<NewsResponse>> getEverythingNews() async {
+  Future<FutureResponse<NewsResponse>> getEverythingNews({String? qInTitle}) async {
     try {
       if (!await checker.hasInternet) throw ConstantsLocalization.NO_INTERNET;
       final params = {
-        'q':'bitcoin',
+        'qInTitle': qInTitle,
         'apiKey': Constants.API_KEY,
       };
 

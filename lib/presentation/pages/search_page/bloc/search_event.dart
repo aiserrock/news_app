@@ -15,6 +15,10 @@ class SearchMoreLoadEvent extends SearchEvent {
 }
 
 class ChooseChipEvent extends SearchEvent {
+  final String text;
+
+  ChooseChipEvent(this.text);
+
   @override
-  List<Object?> get props => [];
+  List<Object?> get props => [text];
 }
