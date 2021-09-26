@@ -7,11 +7,9 @@ class NewsList extends StatelessWidget {
   const NewsList({
     Key? key,
     required this.bloc,
-    required this.scrollController,
   }) : super(key: key);
 
   final EveryNewsBloc bloc;
-  final ScrollController scrollController;
 
   @override
   Widget build(BuildContext context) {
@@ -24,22 +22,23 @@ class NewsList extends StatelessWidget {
       },
       builder: (context, state) {
         if (state is EveryNewsInitial) {
-          return Container();
+          return SliverList(delegate: SliverChildListDelegate([]));
         }
         state = state as EveryNewsDataState;
         final articles = state.articles;
-        return ListView.builder(
-          padding: EdgeInsets.only(left: 15, right: 15, bottom: 8),
-          itemCount: articles.length + (state.isLoading ? 1 : 0),
-          controller: scrollController,
-          itemBuilder: (context, index) {
-            if (index < articles.length) {
-              return EverythingNewsCard(
-                article: articles[index],
-              );
-            }
-            return Center(child: CircularProgressIndicator());
-          },
+
+        return SliverList(
+          delegate: SliverChildBuilderDelegate(
+            (context, index) {
+              if (index < articles.length) {
+                return EverythingNewsCard(
+                  article: articles[index],
+                );
+              }
+              return Center(child: CircularProgressIndicator());
+            },
+            childCount: articles.length + (state.isLoading ? 1 : 0),
+          ),
         );
       },
     );

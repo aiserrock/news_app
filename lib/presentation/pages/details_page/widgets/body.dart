@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:news_app/domain/entities/convertrs/custom_date_time_converter.dart';
 import 'package:news_app/domain/entities/news.dart';
 import 'package:news_app/presentation/pages/details_page/widgets/row_back.dart';
+import 'package:news_app/resources/resources.dart';
 import 'package:news_app/styles/styles.dart';
 import 'package:news_app/data/extentions/power_string.dart';
 
@@ -19,6 +20,12 @@ class Body extends StatelessWidget {
         ? Image.network(
             article.urlToImage!,
             fit: BoxFit.cover,
+      errorBuilder: (context, error, stackTrace) {
+        return Image.asset(
+          Images.imageNotFound,
+          fit: BoxFit.cover,
+        );
+      },
           )
         : SizedBox.shrink();
     return Stack(

@@ -2,6 +2,7 @@ import 'package:connectivity/connectivity.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:news_app/data/helpers/error_image.dart';
 import 'package:news_app/data/helpers/network_cheker.dart';
 import 'package:news_app/data/repositories/repository.dart';
 import 'package:news_app/domain/entities/convertrs/custom_date_time_converter.dart';
@@ -10,6 +11,7 @@ import 'package:news_app/presentation/general_widgets/custom_app_bar.dart';
 import 'package:news_app/presentation/navigator/router.dart';
 import 'package:news_app/presentation/pages/home_page/bloc/latest_news_bloc/home_bloc.dart';
 import 'package:news_app/presentation/pages/see_all_page/bloc/see_all_bloc.dart';
+import 'package:news_app/resources/resources.dart';
 import 'package:news_app/styles/styles.dart';
 import 'package:news_app/data/extentions/power_string.dart';
 
@@ -41,7 +43,7 @@ class _SeeAllState extends State<SeeAll> {
   void _scrollListener() {
     var isLoading = false;
     if (bloc.state is SeeAllDataState) {
-      isLoading = (bloc.state as HomeDataState).isLoading;
+      isLoading = (bloc.state as SeeAllDataState).isLoading;
     }
     if (scrollController.position.extentAfter < 200 && !isLoading) {
       bloc.add(SeeAllMoreLoadEvent());
@@ -90,7 +92,7 @@ class HotUpdateCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(bottom: 24,left: 15,right: 15),
+      padding: const EdgeInsets.only(bottom: 24, left: 15, right: 15),
       child: Column(
         children: [
           ClipRRect(
@@ -101,6 +103,9 @@ class HotUpdateCard extends StatelessWidget {
                 article.urlToImage ?? '',
                 fit: BoxFit.cover,
                 width: MediaQuery.of(context).size.width,
+                errorBuilder: (context, error, stackTrace) {
+                  return errorImage(context);
+                },
               ),
             ),
           ),

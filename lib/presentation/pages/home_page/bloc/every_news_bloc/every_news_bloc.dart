@@ -32,7 +32,7 @@ class EveryNewsBloc extends Bloc<EveryNewsEvent, EveryNewsState> {
 
   Stream<EveryNewsState> loadArticlesWithSearchQuery(
       {required String query}) async* {
-    yield EveryNewsDataState(isLoading: true, articles: articles);
+    yield EveryNewsDataState(isLoading: true, articles: articles,chipText: query);
 
     final response = await repository.getEverythingNews(qInTitle: query);
 

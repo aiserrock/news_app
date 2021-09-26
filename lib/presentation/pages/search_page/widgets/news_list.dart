@@ -29,7 +29,7 @@ class NewsList extends StatelessWidget {
         state = state as SearchDataState;
         final articles = state.articles;
         return ListView.builder(
-          padding: EdgeInsets.only(left: 15, right: 15, bottom: 8),
+          padding: EdgeInsets.only(bottom: 8),
           itemCount: articles.length + (state.isLoading ? 1 : 0),
           controller: scrollController,
           itemBuilder: (context, index) {

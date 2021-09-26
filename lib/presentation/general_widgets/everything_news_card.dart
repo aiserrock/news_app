@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:news_app/data/helpers/error_image.dart';
 import 'package:news_app/domain/entities/convertrs/custom_date_time_converter.dart';
 import 'package:news_app/domain/entities/news.dart';
 import 'package:news_app/presentation/navigator/router.dart';
+import 'package:news_app/resources/resources.dart';
 import 'package:news_app/styles/styles.dart';
 
 class EverythingNewsCard extends StatelessWidget {
@@ -12,7 +14,7 @@ class EverythingNewsCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(bottom: 8),
+      padding: const EdgeInsets.only(bottom: 8,left: 15,right: 15),
       child: ClipRRect(
         borderRadius: BorderRadius.circular(8),
         child: Container(
@@ -98,6 +100,9 @@ class CardBacking extends StatelessWidget {
       fit: BoxFit.cover,
       width: MediaQuery.of(context).size.width,
       height: 128,
+      errorBuilder: (context, error, stackTrace) {
+        return errorImage(context);
+      },
     );
   }
 }

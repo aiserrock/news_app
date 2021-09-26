@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:news_app/data/helpers/error_image.dart';
 import 'package:news_app/domain/entities/news.dart';
 import 'package:news_app/presentation/navigator/router.dart';
 import 'package:news_app/styles/styles.dart';
@@ -105,6 +106,9 @@ class CardBacking extends StatelessWidget {
       fit: BoxFit.cover,
       width: MediaQuery.of(context).size.width * 0.856,
       height: 240,
+      errorBuilder: (context, error, stackTrace) {
+        return errorImage(context);
+      },
     );
   }
 }

@@ -24,89 +24,107 @@ class _HomeState extends State<Home> {
       HomeBloc(RepositoryImpl(NetworkCheckerImpl(Connectivity())));
   final blocVerticalNews =
       EveryNewsBloc(RepositoryImpl(NetworkCheckerImpl(Connectivity())));
-  final scrollController = ScrollController();
+  final scrollControllerMain = ScrollController();
+  final scrollControllerHorizontal = ScrollController();
 
   @override
   void initState() {
     super.initState();
     blocHorizontalNews.add(HomeInitialLoadEvent());
     blocVerticalNews.add(EveryNewsInitialLoadEvent());
-    scrollController.addListener(_scrollListener);
+    scrollControllerMain.addListener(_scrollListenerMain);
+    scrollControllerHorizontal.addListener(_scrollListenerHorizontal);
   }
 
   @override
   void dispose() {
     blocHorizontalNews.close();
     blocVerticalNews.close();
-    scrollController.dispose();
+    scrollControllerMain.dispose();
+    scrollControllerHorizontal.dispose();
     super.dispose();
   }
 
-  void _scrollListener() {
+  void _scrollListenerMain() {
     var isLoading = false;
     if (blocHorizontalNews.state is HomeDataState) {
       isLoading = (blocHorizontalNews.state as HomeDataState).isLoading;
     }
-    if (scrollController.position.extentAfter < 200 && !isLoading) {
+    if (scrollControllerMain.position.extentAfter < 200 && !isLoading) {
       blocHorizontalNews.add(HomeMoreLoadEvent());
     }
   }
 
+  void _scrollListenerHorizontal() {
+    var isLoading = false;
+    if (blocVerticalNews.state is EveryNewsDataState) {
+      isLoading = (blocHorizontalNews.state as EveryNewsDataState).isLoading;
+    }
+    if (scrollControllerMain.position.extentAfter < 200 && !isLoading) {
+      blocVerticalNews.add(EveryNewsMoreLoadEvent());
+    }
+  }
+
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
-        children: [
-          SearchWithBell(),
-          RowWithSeeAllButton(),
-          SizedBox(height: 16),
-          Expanded(
-            child: BlocConsumer<HomeBloc, HomeState>(
-              bloc: blocHorizontalNews,
-              listener: (context, state) {
-                if (state is HomeDataState && state.error != null) {
-                  // show error
-                }
-              },
-              builder: (context, state) {
-                if (state is HomeInitial) {
-                  return Container();
-                }
-                state = state as HomeDataState;
-                final articles = state.articles;
-                return Column(
-                  children: [
-                    SizedBox(
-                      height: 240,
-                      child: ListView.builder(
-                        padding: EdgeInsets.only(left: 15, right: 7),
-                        scrollDirection: Axis.horizontal,
-                        itemCount: articles.length + (state.isLoading ? 1 : 0),
-                        controller: scrollController,
-                        itemBuilder: (context, index) {
-                          if (index < articles.length) {
-                            return LatestNewsCards(
-                              articles: articles,
-                              index: index,
-                            );
-                          }
-                          return Center(child: CircularProgressIndicator());
-                        },
-                      ),
-                    ),
-                    const SizedBox(height: 24),
-                    FilterCarousel(bloc: blocVerticalNews),
-                    const SizedBox(height: 16),
-                    Expanded(
-                      child: NewsList(
-                        bloc: blocVerticalNews,
-                        scrollController: scrollController,
-                      ),
-                    ),
-                  ],
-                );
-              },
+      body: CustomScrollView(
+        controller: scrollControllerMain,
+        slivers: [
+          SliverList(
+            delegate: SliverChildListDelegate(
+              [
+                SearchWithBell(),
+                RowWithSeeAllButton(),
+                SizedBox(height: 16),
+                BlocConsumer<HomeBloc, HomeState>(
+                  bloc: blocHorizontalNews,
+                  listener: (context, state) {
+                    if (state is HomeDataState && state.error != null) {
+                      // show error
+                    }
+                  },
+                  builder: (context, state) {
+                    if (state is HomeInitial) {
+                      return Container();
+                    }
+                    state = state as HomeDataState;
+                    final articles = state.articles;
+                    return Column(
+                      children: [
+                        SizedBox(
+                          height: 240,
+                          child: ListView.builder(
+                            padding: EdgeInsets.only(left: 15, right: 7),
+                            scrollDirection: Axis.horizontal,
+                            itemCount:
+                                articles.length + (state.isLoading ? 1 : 0),
+                            controller: scrollControllerHorizontal,
+                            itemBuilder: (context, index) {
+                              if (index < articles.length) {
+                                return LatestNewsCards(
+                                  articles: articles,
+                                  index: index,
+                                );
+                              }
+                              return Center(child: CircularProgressIndicator());
+                            },
+                          ),
+                        ),
+                        const SizedBox(height: 24),
+                        FilterCarousel(bloc: blocVerticalNews),
+                        const SizedBox(height: 16),
+                      ],
+                    );
+                  },
+                ),
+              ],
             ),
+          ),
+          NewsList(
+            bloc: blocVerticalNews,
           ),
         ],
       ),
