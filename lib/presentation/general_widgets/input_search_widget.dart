@@ -12,7 +12,7 @@ class InputSearchWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return TextField(
       controller: msgController,
-      autofocus: false,
+      autofocus: true,
       decoration: InputDecoration(
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(16),

@@ -57,35 +57,43 @@ class _SearchState extends State<Search> {
   }
 
   Widget buildScrollable() {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        const SizedBox(height: 24),
-        FilterCarousel(bloc: bloc),
-        const SizedBox(height: 24),
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 15),
-          child: BlocBuilder<SearchBloc, SearchState>(
-            bloc: bloc,
-            builder: (context, state) {
-              if (state is SearchInitial) {
-                return Text('About 0 results for ${Constants.SEARCH_THEME.first}');
-              }
-              state = state as SearchDataState;
-              return Text(
-                  'About ${state.totalResults} results for ${state.chipText}');
-            },
+    return CustomScrollView(
+      controller: scrollController,
+      slivers: [
+        SliverList(
+          delegate: SliverChildListDelegate(
+            [
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const SizedBox(height: 24),
+                  FilterCarousel(bloc: bloc),
+                  const SizedBox(height: 24),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 15),
+                    child: BlocBuilder<SearchBloc, SearchState>(
+                      bloc: bloc,
+                      builder: (context, state) {
+                        if (state is SearchInitial) {
+                          return Text(
+                              'About 0 results for ${Constants.SEARCH_THEME.first}');
+                        }
+                        state = state as SearchDataState;
+                        return Text(
+                            'About ${state.totalResults} results for ${state.chipText}');
+                      },
+                    ),
+                  ),
+                  const SizedBox(height: 16),
+                ],
+              ),
+            ],
           ),
         ),
-        const SizedBox(height: 16),
-        Expanded(
-          child: NewsList(
-            bloc: bloc,
-            scrollController: scrollController,
-          ),
+        NewsList(
+          bloc: bloc,
         ),
       ],
     );
   }
 }
-

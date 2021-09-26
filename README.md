@@ -27,7 +27,7 @@ API: https://newsapi.org/docs/get-started
 ## Screenshots
 
 <p>
-<img src="https://github.com/aiserrock/news_app/blob/master/img/news_app1.png" alt="Screen 1" width="250">
+<img src="https://github.com/aiserrock/news_app/blob/master/img/news_app.gif" alt="Screen 1" width="250">
 </p>
 
 
