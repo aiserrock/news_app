@@ -32,8 +32,11 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
   }
 
   Stream<SearchState> loadArticlesWithSearchQuery({required String query}) async* {
+    if(query == 'Filter'){
+      yield SearchDataState(articles: articles,chipText: query);
+      return;
+    }
     yield SearchDataState(isLoading: true, articles: articles,chipText: query);
-
     final response = await repository.getEverythingNews(qInTitle: query);
 
     if (response.hasData) {

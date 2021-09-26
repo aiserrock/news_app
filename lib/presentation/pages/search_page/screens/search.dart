@@ -79,6 +79,9 @@ class _SearchState extends State<Search> {
                               'About 0 results for ${Constants.SEARCH_THEME.first}');
                         }
                         state = state as SearchDataState;
+                        if(state.chipText == 'Filter'){
+                          return Container();
+                        }
                         return Text(
                             'About ${state.totalResults} results for ${state.chipText}');
                       },
