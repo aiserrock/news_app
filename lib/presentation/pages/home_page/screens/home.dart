@@ -58,7 +58,7 @@ class _HomeState extends State<Home> {
   void _scrollListenerHorizontal() {
     var isLoading = false;
     if (blocVerticalNews.state is EveryNewsDataState) {
-      isLoading = (blocHorizontalNews.state as EveryNewsDataState).isLoading;
+      isLoading = (blocVerticalNews.state as EveryNewsDataState).isLoading;
     }
     if (scrollControllerMain.position.extentAfter < 200 && !isLoading) {
       blocVerticalNews.add(EveryNewsMoreLoadEvent());

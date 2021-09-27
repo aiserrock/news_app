@@ -8,7 +8,6 @@ import 'package:news_app/data/repositories/repository.dart';
 import 'package:news_app/presentation/general_widgets/custom_app_bar.dart';
 import 'package:news_app/presentation/pages/search_page/widgets/filter_carousel.dart';
 import 'package:news_app/presentation/general_widgets/input_search_widget.dart';
-import 'package:news_app/presentation/general_widgets/everything_news_card.dart';
 import 'package:news_app/presentation/pages/search_page/widgets/news_list.dart';
 import 'package:news_app/presentation/pages/search_page/bloc/search_bloc.dart';
 

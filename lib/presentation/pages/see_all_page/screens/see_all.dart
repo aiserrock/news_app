@@ -9,9 +9,7 @@ import 'package:news_app/domain/entities/convertrs/custom_date_time_converter.da
 import 'package:news_app/domain/entities/news.dart';
 import 'package:news_app/presentation/general_widgets/custom_app_bar.dart';
 import 'package:news_app/presentation/navigator/router.dart';
-import 'package:news_app/presentation/pages/home_page/bloc/latest_news_bloc/home_bloc.dart';
 import 'package:news_app/presentation/pages/see_all_page/bloc/see_all_bloc.dart';
-import 'package:news_app/resources/resources.dart';
 import 'package:news_app/styles/styles.dart';
 import 'package:news_app/data/extentions/power_string.dart';
 

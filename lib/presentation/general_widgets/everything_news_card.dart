@@ -3,7 +3,6 @@ import 'package:news_app/data/helpers/error_image.dart';
 import 'package:news_app/domain/entities/convertrs/custom_date_time_converter.dart';
 import 'package:news_app/domain/entities/news.dart';
 import 'package:news_app/presentation/navigator/router.dart';
-import 'package:news_app/resources/resources.dart';
 import 'package:news_app/styles/styles.dart';
 
 class EverythingNewsCard extends StatelessWidget {

@@ -21,8 +21,8 @@ API: https://newsapi.org/docs/get-started
   - Pre push checks the code with `flutter analyze` and `flutter test`
 - Linting style with [Effective Dart](https://dart.dev/guides/language/effective-dart)
 - Test coverage with [Codecov](https://codecov.io/)
-- Dependency Injection with [injectable](https://pub.dev/packages/injectable) and [get_it](https://pub.dev/packages/get_it)
-- Testing with [mockito](https://pub.dev/packages/mockito) and [bloc_test](https://pub.dev/packages/bloc_test)
+- Dependency Injection with [get_it](https://pub.dev/packages/get_it)
+- Testing with [mockito](https://pub.dev/packages/mockito)
 
 ## Screenshots
 

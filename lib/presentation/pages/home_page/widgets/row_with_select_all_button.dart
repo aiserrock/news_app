@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:news_app/presentation/general_widgets/linked_button.dart';
 import 'package:news_app/presentation/navigator/router.dart';
-import 'package:news_app/resources/resources.dart';
 import 'package:news_app/styles/styles.dart';
 
 class RowWithSeeAllButton extends StatelessWidget {

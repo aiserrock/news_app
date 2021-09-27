@@ -11,8 +11,7 @@ extension PowerString on String {
   }
   // special method to remove [..]
   String removeLast() {
-    int startIndex = 0, indexOfSpace;
-    indexOfSpace = this.lastIndexOf('[');
+    var indexOfSpace = this.lastIndexOf('[');
     if (indexOfSpace == -1) {
       //-1 is when character is not found
       return this;
